@@ -1,0 +1,26 @@
+.document{
+    position: relative;
+    height: calc(100vh - 70px);
+    width: calc(100% - 250px);
+    left: 250px;
+    padding: 10px 14px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header{
+    width: calc(100% - 250px);
+    position: relative;
+    height: 70px;
+    left: 250px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding: 30px;
+    border-bottom: 1px solid #00000020;
+}
+.header label{
+    font-weight: 600;
+}

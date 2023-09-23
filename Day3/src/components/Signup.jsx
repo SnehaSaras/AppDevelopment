@@ -1,40 +1,54 @@
-import * as React from 'react'
-import '../assets/css/App.css'
-const Signup=()=>{
-    const [formdata, setFormdata]=React.useState({
-        username:"",
-        password:""
-    })
-    const handleOnChange=(e)=>{
-        const [name,value] = [e.target.name,e.target.value];
-        setFormdata({
-            ...formdata,
-            [name]: value
-        })
-    } 
-    const submitForm=(e)=>{
-        e.preventDefault();
-        console.log(formdata);
-    }
-    return(
-        <form onSubmit={submitForm}>
-            <div className='main'>
-                <div className='container'>
-                    <h1>Signup</h1>
-                    <label>FIRSTNAME</label>
-                    <input type="text" name="FIRSTNAME" id="firstname" onChange={handleOnChange} />
-                    <label>LASTNAME</label>
-                    <input type="text" name="LASTNAME" id="lastname" onChange={handleOnChange} />
-                    <label>EMAIL</label>
-                    <input type="text" name="EMAIL" id="email" onChange={handleOnChange} />
-                    <label>PASSWORD</label>
-                    <input type="text" name="PASSWORD" id="password" onChange={handleOnChange} />
-                    <label>CONFIRM PASSWORD</label>
-                    <input type="text" name="CONFIRM PASSWORD" id="confirmpassword" onChange={handleOnChange} />
-                    <button type="submit">SIGNUP</button>
-                </div>
-            </div>
-        </form>
-    )
-}  
-export default Signup;  
+import React from "react";
+import '../assets/css/Signup.css'
+import signup from '../assets/signup.jpg'
+import { Link } from 'react-router-dom'
+
+const Signup = () =>
+{
+      const [signupData, setSignUpData] = React.useState({
+            firstname:"",
+            username:"",
+            age:"",
+            email:"",
+            password:"",
+            confirmpassword:""
+      })
+
+      const handleOnChange = (e) =>
+      {
+            const [name, value] = [e.target.name, e.target.value] ;
+            setSignUpData({
+                  ...signupData,
+                  [name]:value
+            })
+      }
+
+      const onSubmit = (e) => {
+            e.preventDefault() ;
+            console.log(signupData) ;
+      }
+
+      return(
+            <form onSubmit={onSubmit}>
+                  <div className="main">
+                        <div>
+                             <img src={signup} alt="" /> 
+                        </div>
+                        <div className="container-sign">
+                              <h1><strong>SIGN</strong> UP</h1>
+                              <input type="text" placeholder="FIRSTNAME" name="firstname" onChange={handleOnChange}></input>
+                              <input type="text" placeholder="USERNAME" name="username" onChange={handleOnChange}></input>
+                              <input type="text" placeholder="AGE" name="age" onChange={handleOnChange}></input>
+                              <input type="email" placeholder="EMAIL ID" name="email" onChange={handleOnChange}></input>
+                              <input type="password" placeholder="PASSWORD" name="password" onChange={handleOnChange}></input>
+                              <input type="password" placeholder="CONFIRM PASSWORD" name="confirmpassword" onChange={handleOnChange}></input>
+                              <button type="submit">SIGNUP</button>
+                              <label>Already have an account? <Link to='/'>Signin</Link></label>
+                        </div>    
+                  </div>
+                   
+            </form>
+      )
+}
+
+export default Signup

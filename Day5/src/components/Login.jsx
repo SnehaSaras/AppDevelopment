@@ -8,7 +8,8 @@ import { useDispatch } from 'react-redux'
 
 
 const Login = () => {
-  const navigate = useNavigate() ;
+
+  const Navigate = useNavigate();
   const [email, setEmail] = useState("") ;
   const [password, setPassword] = useState("") ;
 
@@ -22,10 +23,10 @@ const onSubmit = (e) => {
       password:password,
     })
     );
-    if(email === 'admin@gmail.com' && password === '12345')
-    {
-      navigate("/adminDashboard")
-    }
+if(email === 'admin@gmail.com' && password === '12345')
+{
+  Navigate("/adminDashboard")
+}
 
     
 }

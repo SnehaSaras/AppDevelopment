@@ -1,12 +1,15 @@
-import Dashboard from './components/Admin/Dashboard/Dashboard';
-import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import Policies from './components/Admin/Policies/Policies';
-import Document from './components/Admin/Document/Document';
-import Settings from './components/Admin/Settings/Settings';
-import Help from './components/Admin/Help/Help';
-import Customer from './components/Admin/Customer/Customer';
+import Dashboard from './components/admin/Dashboard/Dashboard';
+
+import { BrowserRouter as Router, Route, Routes, Navigate} from 'react-router-dom';
+import Policies from './components/admin/Policies/Policies';
+import Document from './components/admin/Documents/Document';
+import Settings from './components/admin/Settings/Settings';
+import Help from './components/admin/Help/Help';
+import Customer from './components/admin/Customer/Customer';
 import Login from './components/Login';
 import Signup from './components/Signup';
+
+
 function App() {
 
   return (
@@ -15,7 +18,6 @@ function App() {
         <Routes>
           <Route path='/' element={<Login/>}></Route>
           <Route path='/signup' element={<Signup/>}></Route>
-          
           <Route path='/adminPolicies' element={<Policies/>}></Route>
           <Route path='/adminDocument' element={<Document/>}></Route>
           <Route path='/adminSettings' element={<Settings/>}></Route>
@@ -29,4 +31,3 @@ function App() {
 }
 
 export default App;
-

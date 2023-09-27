@@ -1,0 +1,43 @@
+.main-about{
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    display: flex;
+    gap:2rem;
+    align-items: center;
+    justify-content: center;
+}
+.firstpanel-about{
+    width: 60vh;
+    height: 90vh;
+    padding: 20px;
+    background-color: rgb(190, 204, 98);
+}
+.secondpanel-about{
+    width: 60vh;
+    height: 90vh;
+    background-color: rgb(249, 94, 177);
+    padding: 20px;
+}
+.thirdpanel-about{
+    width:60vh;
+    height: 90vh;
+    background-color:rgb(190, 204, 98);
+    padding: 20px;
+}
+.thirdpanel-about .btn{
+    text-align: center;
+    width: 100%;
+    height: 5vh;
+    padding: 10px;
+    background-color: rgb(250, 43, 43);
+}
+.main-about h1{
+    font-size: 20px;
+}
+.main-about p{
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 30px;
+}

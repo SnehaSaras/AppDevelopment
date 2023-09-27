@@ -1,0 +1,31 @@
+.document{
+    position: relative;
+    height: calc(100vh - 70px);
+    width: calc(100% - 250px);
+    left: 250px;
+    padding: 10px 14px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header label{
+    font-weight: 600;
+}
+.menu-items li .link-text-logout{
+    text-decoration: none;
+    display: flex;
+    height: 90px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: black;
+}
+.menu-items li .link-text-logout:hover{
+    background-color:  rgb(228, 100, 109);
+    border-radius: 10px;
+    color: #fff;
+    
+}   
+

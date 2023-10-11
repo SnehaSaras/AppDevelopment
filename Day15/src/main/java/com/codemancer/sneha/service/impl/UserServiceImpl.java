@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
         User newUser = new User();
         if (user != null) {
             newUser = User.builder()
-                    .name(request.getName())
+                    .user(request.getUser())
                     .email(request.getEmail())
                     .password(request.getPassword())
                     .role(request.getRole())
@@ -73,7 +73,7 @@ public class UserServiceImpl implements UserService {
     private UserResponse mapUserToUserResponse(User user) {
         return UserResponse.builder()
                 .uid(user.getUid())
-                .name(user.getName())
+                .user(user.getUser())
                 .email(user.getEmail())
                 .role(user.getRole())
                 .isEnabled(user.getIsEnabled())

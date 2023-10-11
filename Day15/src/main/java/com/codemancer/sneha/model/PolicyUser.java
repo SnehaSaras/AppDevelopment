@@ -37,13 +37,13 @@ public class PolicyUser {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private Long id;
+    private int id;
 	private String policy_name;
 	private String available_vacants;
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getPolicy_name() {
@@ -62,5 +62,14 @@ public class PolicyUser {
 	public String toString() {
 		return "PolicyUser [id=" + id + ", policy_name=" + policy_name + ", available_vacants=" + available_vacants
 				+ "]";
+	}
+	public PolicyUser(int id, String policy_name, String available_vacants) {
+		super();
+		this.id = id;
+		this.policy_name = policy_name;
+		this.available_vacants = available_vacants;
+	}
+	public PolicyUser() {
+		
 	}
 }

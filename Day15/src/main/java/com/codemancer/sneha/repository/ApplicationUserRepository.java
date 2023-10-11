@@ -18,7 +18,7 @@ import com.codemancer.sneha.model.*;
 
 @Repository
 
-public interface ApplicationUserRepository extends JpaRepository<ApplicationUser, Long>{
+public interface ApplicationUserRepository extends JpaRepository<ApplicationUser, Integer>{
 
 
 

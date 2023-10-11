@@ -1,98 +1,131 @@
 package com.codemancer.sneha.controller;
 
-	
-
-	import java.util.List;
 
 
-	
+import java.util.List;
 
-	import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.Optional;
 
 
 
-	import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.beans.factory.annotation.Autowired;
 
-	import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.http.HttpStatus;
+
+import org.springframework.http.ResponseEntity;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+
+import org.springframework.web.bind.annotation.GetMapping;
+
+import org.springframework.web.bind.annotation.PathVariable;
+
+import org.springframework.web.bind.annotation.PostMapping;
+
+import org.springframework.web.bind.annotation.PutMapping;
+
+import org.springframework.web.bind.annotation.RequestBody;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import org.springframework.web.bind.annotation.RestController;
+
+import com.codemancer.sneha.model.ClaimsUser;
+import com.codemancer.sneha.model.PolicyUser;
+
+import com.codemancer.sneha.repository.PolicyUserRepository;
 
 
 
-	import org.springframework.web.bind.annotation.PostMapping;
 
-	import org.springframework.web.bind.annotation.PutMapping;
 
-	import org.springframework.web.bind.annotation.RequestBody;
+@RestController
 
-	import org.springframework.web.bind.annotation.RequestMapping;
+@RequestMapping("/api/policy")
 
-	import org.springframework.web.bind.annotation.RequestParam;
+@CrossOrigin
 
-	import org.springframework.web.bind.annotation.RestController;
+public class PolicyUserController {
 
-	
+@Autowired
 
-	import com.codemancer.sneha.model.*;
 
-	import com.codemancer.sneha.repository.PolicyUserRepository;
+private PolicyUserRepository policyRepository ;
 
-	
-	
 
-	
 
-	@RequestMapping("/api/policy")
 
-	@RestController
+@PostMapping("/add")
 
-	public class PolicyUserController {
+public PolicyUser add(final @RequestBody PolicyUser policy)
 
-	@Autowired
+{
 
-	PolicyUserRepository repo ;
+return policyRepository.save(policy) ;
 
-	@PostMapping("/addEmployee")
 
-	public PolicyUser saveEmployee(@RequestBody PolicyUser emp)
+}
 
-	{
+@GetMapping("/get")
 
-	return repo.save(emp) ;
+public List<PolicyUser> getAllStudent()
 
-	}
+{
 
-	@GetMapping("/get")
+return policyRepository.findAll() ;
 
-	public List<PolicyUser> getEmployee(PolicyUser emp)
+}
 
-	{
+@GetMapping("/gets/{id}")
 
-		return repo.findAll() ;
+public PolicyUser getAllStudents(@PathVariable int id)
 
-	}
+{
 
-	@PutMapping("update")
+return policyRepository.findById(id).orElse(null) ;
 
-	public PolicyUser updateEmployee(@RequestBody PolicyUser emp)
+}
+@PutMapping("/update/{id}")
 
-	{
+public ResponseEntity<PolicyUser> updatePolicy(@RequestBody PolicyUser updatedPolicy, @PathVariable int id) {
 
-	return repo.saveAndFlush(emp) ;
+    Optional<PolicyUser> policyOptional = policyRepository.findById(id);
 
-	}
 
-	@DeleteMapping("/delete")
 
-	public String delete(@RequestParam long id)
+    if (policyOptional.isPresent()) {
 
-	{
+        PolicyUser existingPolicy = policyOptional.get();
 
-		repo.deleteById(id) ;
+        existingPolicy.setPolicy_name(updatedPolicy.getPolicy_name());
 
-		return "DELETED SUCCESSFULLY" ;
+        existingPolicy.setAvailable_vacants(updatedPolicy.getAvailable_vacants());
 
-	}
+        policyRepository.save(existingPolicy);
 
-	
+        return new ResponseEntity<>(existingPolicy, HttpStatus.OK);
 
-	}
+    } else {
+
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND); // Return a 404 status if the policy with the given ID is not found.
+
+    }
+
+}
+
+@DeleteMapping("/delete/{id}")
+
+public String delete(@PathVariable int id)
+
+{
+
+policyRepository.deleteById(id) ;
+
+return "Deleted Successfully" ;
+
+}
+}
 

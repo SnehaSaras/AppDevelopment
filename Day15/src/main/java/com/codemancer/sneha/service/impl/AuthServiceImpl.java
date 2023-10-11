@@ -34,7 +34,7 @@ public class AuthServiceImpl implements AuthService {
         Optional<User> isUserExists = userRepository.findByEmail(request.getEmail());
         if (!isUserExists.isPresent()) {
             var user = User.builder()
-                    .name(request.getName())
+                    .user(request.getUser())
                     .email(request.getEmail())
                     .password(passwordEncoder.encode(request.getPassword()))
                     .isEnabled(true)
@@ -55,6 +55,9 @@ public class AuthServiceImpl implements AuthService {
         var token = jwtUtil.generateToken(user);
         return AuthenticationResponse.builder()
                 .token(token)
+                .uid(user.getUid())
+                .role(user.getRole())
+                .user(user.getUser())
                 .email(user.getEmail())
                 .build();
     }

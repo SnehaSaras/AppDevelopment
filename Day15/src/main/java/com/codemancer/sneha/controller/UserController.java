@@ -14,6 +14,7 @@ import com.codemancer.sneha.constant.Api;
 import com.codemancer.sneha.dto.request.UserRequest;
 import com.codemancer.sneha.dto.response.CountResponse;
 import com.codemancer.sneha.dto.response.UserResponse;
+import com.codemancer.sneha.model.PolicyUser;
 import com.codemancer.sneha.service.UserService;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -45,7 +46,8 @@ public class UserController {
         return countResponse.getCount() != 0 ? ResponseEntity.ok().body(countResponse)
                 : ResponseEntity.noContent().build();
     }
-
+ 
+    
     @PutMapping("/edit/{uid}")
     public ResponseEntity<UserResponse> updateUser(@RequestBody UserRequest request, @PathVariable Long uid) {
         UserResponse userResponse = userService.updateUser(request, uid);
